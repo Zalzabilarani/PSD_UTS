@@ -76,7 +76,7 @@ def calculate_statistics(audio_path):
     return [mean, median, mode_v, maxv, minv, std, skewness, kurt, q1, q3, iqr, mean_zcr, median_zcr, std_zcr, kurtosis_zcr, skew_zcr, mean_rms, median_rms, std_rms, kurtosis_rms, skew_rms]
 
 
-data = pd.read_csv('dataset.csv')
+data = pd.read_csv('hasil_statistik2.csv')
 
 fitur = data.drop(columns=['Label'], axis =1)
 target = data['Label']
