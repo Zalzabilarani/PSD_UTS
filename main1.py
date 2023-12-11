@@ -215,34 +215,34 @@ with tab1:
             # Simpan file audio yang diunggah
                 audio_path = "audio_diunggah.wav"
                 with open(audio_path, "wb") as f:
-                f.write(uploaded_file.getbuffer())
+                    f.write(uploaded_file.getbuffer())
                 
                 # Hitung statistik untuk file audio yang diunggah
                 statistik = calculate_statistics(audio_path)
                 
                 results = []
                 result = {
-                'Audio Mean': statistik[0],
-                'Audio Median': statistik[1],
-                'Audio Mode': statistik[2],
-                'Audio Maxv': statistik[3],
-                'Audio Minv': statistik[4],
-                'Audio Std': statistik[5],
-                'Audio Skew': statistik[6],
-                'Audio Kurtosis': statistik[7],
-                'Audio Q1': statistik[8],
-                'Audio Q3': statistik[9],
-                'Audio IQR': statistik[10],
-                'ZCR Mean': statistik[11],
-                'ZCR Median': statistik[12],
-                'ZCR Std': statistik[13],
-                'ZCR Kurtosis': statistik[14],
-                'ZCR Skew': statistik[15],
-                'RMS Energi Mean': statistik[16],
-                'RMS Energi Median': statistik[17],
-                'RMS Energi Std': statistik[18],
-                'RMS Energi Kurtosis': statistik[19],
-                'RMS Energi Skew': statistik[20],
+                    'Audio Mean': statistik[0],
+                    'Audio Median': statistik[1],
+                    'Audio Mode': statistik[2],
+                    'Audio Maxv': statistik[3],
+                    'Audio Minv': statistik[4],
+                    'Audio Std': statistik[5],
+                    'Audio Skew': statistik[6],
+                    'Audio Kurtosis': statistik[7],
+                    'Audio Q1': statistik[8],
+                    'Audio Q3': statistik[9],
+                    'Audio IQR': statistik[10],
+                    'ZCR Mean': statistik[11],
+                    'ZCR Median': statistik[12],
+                    'ZCR Std': statistik[13],
+                    'ZCR Kurtosis': statistik[14],
+                    'ZCR Skew': statistik[15],
+                    'RMS Energi Mean': statistik[16],
+                    'RMS Energi Median': statistik[17],
+                    'RMS Energi Std': statistik[18],
+                    'RMS Energi Kurtosis': statistik[19],
+                    'RMS Energi Skew': statistik[20],
                 }
                 results.append(result)
                 df = pd.DataFrame(results)
@@ -256,40 +256,40 @@ with tab1:
                 # Memuat data audio yang diunggah dan menyimpannya sebagai file audio
                 audio_path = "audio_diunggah.wav"
                 with open(audio_path, "wb") as f:
-                f.write(uploaded_file.getbuffer())
+                    f.write(uploaded_file.getbuffer())
                 
                 # Menghitung statistik untuk file audio yang diunggah (gunakan fungsi calculate_statistics sesuai kebutuhan)
                 audio_features = calculate_statistics(audio_path)
                 results = []
                 result = {
-                'Audio Mean': audio_features[0],
-                'Audio Median': audio_features[1],
-                'Audio Mode': audio_features[2],
-                'Audio Maxv': audio_features[3],
-                'Audio Minv': audio_features[4],
-                'Audio Std': audio_features[5],
-                'Audio Skew': audio_features[6],
-                'Audio Kurtosis': audio_features[7],
-                'Audio Q1': audio_features[8],
-                'Audio Q3': audio_features[9],
-                'Audio IQR': audio_features[10],
-                'ZCR Mean': audio_features[11],
-                'ZCR Median': audio_features[12],
-                'ZCR Std': audio_features[13],
-                'ZCR Kurtosis': audio_features[14],
-                'ZCR Skew': audio_features[15],
-                'RMS Energi Mean': audio_features[16],
-                'RMS Energi Median': audio_features[17],
-                'RMS Energi Std': audio_features[18],
-                'RMS Energi Kurtosis': audio_features[19],
-                'RMS Energi Skew': audio_features[20],
+                    'Audio Mean': audio_features[0],
+                    'Audio Median': audio_features[1],
+                    'Audio Mode': audio_features[2],
+                    'Audio Maxv': audio_features[3],
+                    'Audio Minv': audio_features[4],
+                    'Audio Std': audio_features[5],
+                    'Audio Skew': audio_features[6],
+                    'Audio Kurtosis': audio_features[7],
+                    'Audio Q1': audio_features[8],
+                    'Audio Q3': audio_features[9],
+                    'Audio IQR': audio_features[10],
+                    'ZCR Mean': audio_features[11],
+                    'ZCR Median': audio_features[12],
+                    'ZCR Std': audio_features[13],
+                    'ZCR Kurtosis': audio_features[14],
+                    'ZCR Skew': audio_features[15],
+                    'RMS Energi Mean': audio_features[16],
+                    'RMS Energi Median': audio_features[17],
+                    'RMS Energi Std': audio_features[18],
+                    'RMS Energi Kurtosis': audio_features[19],
+                    'RMS Energi Skew': audio_features[20],
                 }
                 results.append(result)
                 data_tes = pd.DataFrame(results)
                 
                 # Load the model and hyperparameters
                 with open('gridsearchknnminmaxmodel.pkl', 'rb') as model_file:
-                saved_data = pickle.load(model_file)
+                    saved_data = pickle.load(model_file)
                 
                 df = pd.read_csv('hasil_statistik2.csv')
                 
@@ -302,8 +302,7 @@ with tab1:
                 X_scaled = scaler.fit_transform(X)
                 
                 # Memisahkan data menjadi data latih dan data uji
-                X_train, X_test, y_train, y_test = train_test_split(
-                X_scaled, y, test_size=0.2, random_state=42)
+                X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.2, random_state=42)
                 
                 # Access hyperparameters
                 best_n_neighbors = saved_data['hyperparameters']['best_n_neighbors']
@@ -322,8 +321,7 @@ with tab1:
                 X_test_pca = pca.transform(X_test_minmax)
                 
                 # Membuat model KNN dengan hyperparameter terbaik
-                best_knn_model = KNeighborsClassifier(
-                n_neighbors=best_n_neighbors, weights=best_weights, metric=best_metric)
+                best_knn_model = KNeighborsClassifier(n_neighbors=best_n_neighbors, weights=best_weights, metric=best_metric)
                 best_knn_model.fit(X_train_pca, y_train)
                 
                 predicted_label = best_knn_model.predict(X_test_pca)
